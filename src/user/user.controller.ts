@@ -6,35 +6,39 @@ import {MessagePattern} from "@nestjs/microservices";
 import {AuthGuard} from "../guards/auth/auth.guard";
 import {RolesGuard} from "../guards/roles/roles.guard";
 
-@Controller('user')
-@UseGuards(AuthGuard, RolesGuard)
+@Controller()
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @UseGuards(AuthGuard, RolesGuard)
   @SetMetadata('roles', ['admin'])
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
     return this.userService.create(createUserDto);
   }
 
+  @UseGuards(AuthGuard, RolesGuard)
   @SetMetadata('roles', ['admin', 'user'])
   @Get()
   findAll() {
     return this.userService.findAll();
   }
 
+  @UseGuards(AuthGuard, RolesGuard)
   @SetMetadata('roles', ['admin', 'user'])
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.userService.findOne(+id);
   }
 
+  @UseGuards(AuthGuard, RolesGuard)
   @SetMetadata('roles', ['admin'])
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
     return this.userService.update(+id, updateUserDto);
   }
 
+  @UseGuards(AuthGuard, RolesGuard)
   @SetMetadata('roles', ['admin'])
   @Delete(':id')
   remove(@Param('id') id: string) {

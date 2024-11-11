@@ -28,6 +28,12 @@ export class SeedService {
                 }),
             ]);
             console.log('Updated seeding history', seedingHistory);
+            const [user] = await Promise.all([
+                this.prisma.users.create({
+                    data: { email: "ipf@software.com", password: "1234567", role_id: 1 }
+                })
+            ]);
+            console.log('Seeding user', user);
         }else{
             console.log('Seeding history already exists');
         }

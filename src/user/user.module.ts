@@ -11,7 +11,7 @@ import {Reflector} from "@nestjs/core";
       name: 'AUTH_SERVICE',
       transport: Transport.TCP,
       options: {
-        host: '192.168.0.20',
+        host: 'host.docker.internal',
         port: 3001
       }
     }
