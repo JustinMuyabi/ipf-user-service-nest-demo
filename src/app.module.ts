@@ -11,7 +11,8 @@ import {PrismaModule} from "./prisma/prisma.module";
           name: 'AUTH_SERVICE',
           transport: Transport.TCP,
           options: {
-            host: '0.0.0.0',
+            //  host: '0.0.0.0',
+            host: 'auth-service',
             port: 3001
           }
         }
